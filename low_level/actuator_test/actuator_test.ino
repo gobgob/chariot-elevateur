@@ -15,7 +15,7 @@
 #define LED_ERROR 4
 #define LED_WARN 5
 
-#define VERSION "0.1.0"
+#define VERSION "0.1.1"
 
 #define ABSOLUTE 0
 #define INCREMENTAL 1
@@ -24,7 +24,7 @@ char serialInput[10];
 int serialPrompt = 0;
 
 DynamixelInterface dInterface(Serial1);  // Stream
-DynamixelMotor motorX(dInterface, 2);  // Interface, ID;
+DynamixelMotor motorX(dInterface, 0);  // Interface, ID;
 DynamixelMotor motorA(dInterface, 1); // Interface, ID;
 
 int currentMotorXPosition;
