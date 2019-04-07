@@ -29,8 +29,8 @@
 #define ACT_MGR_Y_ORIGIN            (150)       // deg (Angle de l'AX12 de l'axe Y pour une fourche centr�e)
 #define ACT_MGR_Y_CONVERTER         (2.8233)    // deg/mm (Conversion Y <-> Angle d'AX12) (100 deg = 35.42mm)
 #define ACT_MGR_THETA_ORIGIN        (150)       // deg (Angle de l'AX12 theta pour une fourche horizontale)
-#define ACT_MGR_SENSE_MIN_THETA     (130)       // deg (Angle minimal de l'AX12 theta pour utiliser les capteurs de fourche)
-#define ACT_MGR_SENSE_MAX_THETA     (170)       // deg (Angle maximal de l'AX12 theta pour utiliser les capteurs de fourche)
+#define ACT_MGR_SENSE_MIN_THETA     (-20)       // deg (Angle minimal de l'AX12 theta pour utiliser les capteurs de fourche)
+#define ACT_MGR_SENSE_MAX_THETA     (20)       // deg (Angle maximal de l'AX12 theta pour utiliser les capteurs de fourche)
 #define ACT_MGR_STEPPER_SPEED       (400)       // rmp
 #define ACT_MGR_MICROSTEP           (16)    
 #define ACT_MGR_STEP_PER_TURN       (200)       // step/turn
