@@ -89,15 +89,15 @@ public:
     }
 
     /*
-        y (mm) d�placement lat�ral
-        y=0: fourche centr�e
-        y>0: d�calage � gauche
-        y<0: d�calage � droite
+        y (mm) déplacement latéral
+        y=0: fourche centrée
+        y>0: décalage à gauche
+        y<0: décalage à droite
     */
     float y;
 
     /*
-        z (mm) d�placement vertical
+        z (mm) déplacement vertical
         z=0: fourche au niveau du sol
         z>0: translation vers le haut
     */
