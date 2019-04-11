@@ -117,7 +117,7 @@ public:
         theta (deg) angle de la fourche
         theta=0: fourche horizontale
         theta>0: pointe vers le haut (conservation du palet)
-        theta<0: pointe vers le bas (�jection du palet)
+        theta<0: pointe vers le bas (éjection du palet)
     */
     float theta;
 
