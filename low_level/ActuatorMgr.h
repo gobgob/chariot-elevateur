@@ -83,15 +83,6 @@ public:
 
     bool isWithinRange() const
     {
-        if (!(y >= ACT_MGR_Y_MIN && y <= ACT_MGR_Y_MAX)) {
-            Server.printf_err("y is out of range (%g)", y);
-        }
-        if (!(z >= ACT_MGR_Z_MIN && z <= ACT_MGR_Z_MAX)) {
-            Server.printf_err("z is out of range (%g)", z);
-        }
-        if (!(theta >= ACT_MGR_THETA_MIN && theta <= ACT_MGR_THETA_MAX)) {
-            Server.printf_err("theta is out of range (%g)", theta);
-        }
         return
             y >= ACT_MGR_Y_MIN && y <= ACT_MGR_Y_MAX &&
             z >= ACT_MGR_Z_MIN && z <= ACT_MGR_Z_MAX &&
@@ -286,6 +277,15 @@ private:
         if (!p.isWithinRange())
         {
             m_error_code |= ACT_UNREACHABLE;
+            if (y < ACT_MGR_Y_MIN || y > ACT_MGR_Y_MAX) {
+                Server.printf_err("y (%g) is out of range (%g;%g)", y, ACT_MGR_Y_MIN, ACT_MGR_Y_MAX);
+            }
+            if (z < ACT_MGR_Z_MIN || z > ACT_MGR_Z_MAX) {
+                Server.printf_err("z (%g) is out of range (%g;%g)", z, ACT_MGR_Z_MIN, ACT_MGR_Z_MAX);
+        }
+            if (theta < ACT_MGR_THETA_MIN | theta > ACT_MGR_THETA_MAX) {
+                Server.printf_err("theta (%g) is out of range (%g;%g)", theta, ACT_MGR_THETA_MIN, ACT_MGR_THETA_MAX);
+            }
         }
         else
         {
