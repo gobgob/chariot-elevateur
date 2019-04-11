@@ -15,8 +15,8 @@
 #include "CommunicationServer.h"
 #include "PuckScanner.h"
 
-#define ACT_MGR_INTERRUPT_PERIOD    (100)       // �s
-#define ACT_MGR_POLL_PERIOD         (5000)      // �s
+#define ACT_MGR_INTERRUPT_PERIOD    (100)       // µs
+#define ACT_MGR_POLL_PERIOD         (5000)      // µs
 #define ACT_MGR_MOVE_TIMEOUT        (8000)      // ms
 #define ACT_MGR_Y_TOLERANCE         (1.5)       // mm
 #define ACT_MGR_Z_TOLERANCE         (1.0)       // mm
@@ -25,14 +25,14 @@
 #define ACT_MGR_Y_MAX               (23.795)    // mm
 #define ACT_MGR_Z_MIN               (0)         // mm
 #define ACT_MGR_Z_MAX               (208)       // mm (todo: adjust with the base)
-#define ACT_MGR_THETA_MIN           (60)        // deg
-#define ACT_MGR_THETA_MAX           (190)       // deg
-#define ACT_MGR_Y_ORIGIN            (150)       // deg (Angle de l'AX12 de l'axe Y pour une fourche centr�e)
+#define ACT_MGR_THETA_MIN           (-90)       // deg
+#define ACT_MGR_THETA_MAX           (40)        // deg
+#define ACT_MGR_Y_ORIGIN            (150)       // deg (Angle de l'AX12 de l'axe Y pour une fourche centrée)
 #define ACT_MGR_Y_CONVERTER         (2.8233)    // deg/mm (Conversion Y <-> Angle d'AX12) (100 deg = 35.42mm)
 #define ACT_MGR_THETA_ORIGIN        (150)       // deg (Angle de l'AX12 theta pour une fourche horizontale)
 #define ACT_MGR_SENSE_MIN_THETA     (-20)       // deg (Angle minimal de l'AX12 theta pour utiliser les capteurs de fourche)
-#define ACT_MGR_SENSE_MAX_THETA     (20)       // deg (Angle maximal de l'AX12 theta pour utiliser les capteurs de fourche)
-#define ACT_MGR_STEPPER_SPEED       (400)       // rmp
+#define ACT_MGR_SENSE_MAX_THETA     (20)        // deg (Angle maximal de l'AX12 theta pour utiliser les capteurs de fourche)
+#define ACT_MGR_STEPPER_SPEED       (200)       // rmp
 #define ACT_MGR_MICROSTEP           (16)    
 #define ACT_MGR_STEP_PER_TURN       (200)       // step/turn
 #define ACT_MGR_Z_PER_TURN          (8)         // mm/turn
