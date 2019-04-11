@@ -12,6 +12,7 @@
 #include "Singleton.h"
 #include "Serializer.h"
 #include "Config.h"
+#include "CommunicationServer.h"
 #include "PuckScanner.h"
 
 #define ACT_MGR_INTERRUPT_PERIOD    (100)       // �s
@@ -82,6 +83,15 @@ public:
 
     bool isWithinRange() const
     {
+        if (!(y >= ACT_MGR_Y_MIN && y <= ACT_MGR_Y_MAX)) {
+            Server.printf_err("y is out of range (%g)", y);
+        }
+        if (!(z >= ACT_MGR_Z_MIN && z <= ACT_MGR_Z_MAX)) {
+            Server.printf_err("z is out of range (%g)", z);
+        }
+        if (!(theta >= ACT_MGR_THETA_MIN && theta <= ACT_MGR_THETA_MAX)) {
+            Server.printf_err("theta is out of range (%g)", theta);
+        }
         return
             y >= ACT_MGR_Y_MIN && y <= ACT_MGR_Y_MAX &&
             z >= ACT_MGR_Z_MIN && z <= ACT_MGR_Z_MAX &&
