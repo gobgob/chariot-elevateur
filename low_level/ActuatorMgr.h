@@ -347,7 +347,7 @@ private:
             if (endstopPressed())
             {
                 resetZOrigin();
-                m_aim_position.z = m_current_position.z;
+                m_aim_position.z = m_current_position.z - 20;
                 m_aim_position.theta = ACT_MGR_THETA_MIN;
                 sendAimPosition();
                 m_composed_move_step++;
