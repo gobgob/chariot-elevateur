@@ -47,6 +47,9 @@ public:
         immediateOrderList[0x09] = &SetWarnings::Instance();
         immediateOrderList[0x0A] = &ActuatorStop::Instance();
         immediateOrderList[0x0B] = &ActuatorGetPosition::Instance();
+        immediateOrderList[0x0C] = &ActuatorSetSpeedZ::Instance();
+        immediateOrderList[0x0D] = &ActuatorSetSpeedY::Instance();
+        immediateOrderList[0x0E] = &ActuatorSetSpeedTheta::Instance();
 
         immediateOrderList[0x10] = &Display::Instance();
         immediateOrderList[0x11] = &Save::Instance();

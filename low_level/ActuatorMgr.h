@@ -32,8 +32,8 @@
 #define ACT_MGR_THETA_ORIGIN        (150)       // deg (Angle de l'AX12 theta pour une fourche horizontale)
 #define ACT_MGR_SENSE_MIN_THETA     (-20)       // deg (Angle minimal de l'AX12 theta pour utiliser les capteurs de fourche)
 #define ACT_MGR_SENSE_MAX_THETA     (20)        // deg (Angle maximal de l'AX12 theta pour utiliser les capteurs de fourche)
-#define ACT_MGR_STEPPER_SPEED       (200)       // rmp
-#define ACT_MGR_MICROSTEP           (16)
+#define ACT_MGR_STEPPER_SPEED       (300)       // rmp
+#define ACT_MGR_MICROSTEP           (16)    
 #define ACT_MGR_STEP_PER_TURN       (200)       // step/turn
 #define ACT_MGR_Z_PER_TURN          (8)         // mm/turn
 
@@ -248,6 +248,40 @@ public:
     int goToPosition(const ActuatorPosition &p) { return initMove(STATUS_MOVING, p); }
     int scanPuck() { return initMove(STATUS_SCANNING, m_current_position); }
 
+    /* Tuning */
+    /**
+     * Max speed: 300
+     */
+    int setSpeedZ(short rpm) { 
+        if (m_status != STATUS_IDLE)
+        {
+            return EXIT_FAILURE;
+        }
+         m_z_motor.setRPM(rpm);
+         return EXIT_SUCCESS;
+    }
+    int setSpeedY(uint16_t speed) {
+        if (m_status != STATUS_IDLE)
+        {
+            return EXIT_FAILURE;
+        }
+         m_y_motor.speed(speed);
+         return EXIT_SUCCESS;
+    }
+    /**
+     * Manipulation speed: 100
+     * Eject speed: 400
+     * Max speed: 1000
+     */
+    int setSpeedTheta(uint16_t speed) {
+        if (m_status != STATUS_IDLE)
+        {
+            return EXIT_FAILURE;
+        }
+         m_theta_motor.speed(speed);
+         return EXIT_SUCCESS;
+    }
+
 private:
     enum ActuatorStatus
     {
@@ -460,7 +494,7 @@ private:
                 uint16_t angle;
                 DynamixelStatus dynamixelStatus = m_theta_motor.currentPositionDegree(angle);
                 if (angle <= 300) {
-                    m_current_position.theta = (float)angle - ACT_MGR_THETA_ORIGIN;
+                    m_current_position.theta = MAX(MIN((float)angle - ACT_MGR_THETA_ORIGIN, ACT_MGR_THETA_MAX), ACT_MGR_THETA_MIN);
                 }
                 if (dynamixelStatus & (DYN_STATUS_OVERLOAD_ERROR | DYN_STATUS_OVERHEATING_ERROR)) {
                     m_error_code |= ACT_AX12_THETA_BLOCKED;
@@ -475,7 +509,7 @@ private:
                 uint16_t angle;
                 DynamixelStatus dynamixelStatus = m_y_motor.currentPositionDegree(angle);
                 if (angle <= 300) {
-                    m_current_position.y = ((float)angle - ACT_MGR_Y_ORIGIN) / ACT_MGR_Y_CONVERTER;
+                    m_current_position.y = MAX(MIN(((float)angle - ACT_MGR_Y_ORIGIN) / ACT_MGR_Y_CONVERTER, ACT_MGR_Y_MAX), ACT_MGR_Y_MIN);
                 }
                 if (dynamixelStatus & (DYN_STATUS_OVERLOAD_ERROR | DYN_STATUS_OVERHEATING_ERROR)) {
                     m_error_code |= ACT_AX12_Y_BLOCKED;

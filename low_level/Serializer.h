@@ -31,6 +31,12 @@ public:
         return (uint32_t)val;
     }
 
+    static short readShort(const std::vector<uint8_t> &input, size_t &start)
+    {
+        int32_t val = readInt(input, start);
+        return (short)val;
+    }
+
     static float readFloat(const std::vector<uint8_t> &input, size_t &start)
     {
         float ret = 0;

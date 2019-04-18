@@ -416,6 +416,72 @@ public:
     }
 };
 
+class ActuatorSetSpeedZ : public OrderImmediate, public Singleton<ActuatorSetSpeedZ>
+{
+public:
+    ActuatorSetSpeedZ() {}
+    virtual void execute(std::vector<uint8_t> & io)
+    {
+        if (io.size() == 4)
+        {
+            size_t readIndex = 0;
+            short speed = Serializer::readShort(io, readIndex);
+            actuatorMgr.setSpeedZ(speed);
+            Server.printf(SPY_ORDER, "ActuatorSetSpeedZ: %d\n", speed);
+            io.clear();
+        }
+        else
+        {
+            Server.printf_err("ActuatorSetSpeedZ: wrong number of arguments\n");
+            io.clear();
+        }
+    }
+};
+
+class ActuatorSetSpeedY : public OrderImmediate, public Singleton<ActuatorSetSpeedY>
+{
+public:
+    ActuatorSetSpeedY() {}
+    virtual void execute(std::vector<uint8_t> & io)
+    {
+        if (io.size() == 4)
+        {
+            size_t readIndex = 0;
+            int32_t speed = Serializer::readInt(io, readIndex);
+            actuatorMgr.setSpeedY(speed);
+            Server.printf(SPY_ORDER, "ActuatorSetSpeedY: %d\n", speed);
+            io.clear();
+        }
+        else
+        {
+            Server.printf_err("ActuatorSetSpeedY: wrong number of arguments\n");
+            io.clear();
+        }
+    }
+};
+
+class ActuatorSetSpeedTheta : public OrderImmediate, public Singleton<ActuatorSetSpeedTheta>
+{
+public:
+    ActuatorSetSpeedTheta() {}
+    virtual void execute(std::vector<uint8_t> & io)
+    {
+        if (io.size() == 4)
+        {
+            size_t readIndex = 0;
+            int32_t speed = Serializer::readInt(io, readIndex);
+            actuatorMgr.setSpeedTheta(speed);
+            Server.printf(SPY_ORDER, "ActuatorSetSpeedTheta: %d\n", speed);
+            io.clear();
+        }
+        else
+        {
+            Server.printf_err("ActuatorSetSpeedTheta: wrong number of arguments\n");
+            io.clear();
+        }
+    }
+};
+
 
 
 /********************
