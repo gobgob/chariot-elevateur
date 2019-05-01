@@ -52,6 +52,7 @@ enum ActuatorError
     ACT_NO_DETECTION        = 0x0080,
     ACT_TIMED_OUT           = 0x0100,
     ACT_ALREADY_MOVING      = 0x0200,
+    ACT_NOT_HOMED           = 0x0300,
 };
 
 
@@ -129,6 +130,7 @@ public:
         m_left_sensor_value = (SensorValue)SENSOR_DEAD;
         m_right_sensor_value = (SensorValue)SENSOR_DEAD;
         m_z_current_move_origin = 0;
+        m_z_homed = false;
         m_composed_move_step = 0;
         m_move_start_time = 0;
         pinMode(PIN_STEPPER_ENDSTOP, INPUT);
@@ -298,7 +300,11 @@ private:
             return EXIT_FAILURE;
         }
         m_error_code = ACT_OK;
-        if (!p.isWithinRange())
+        if (moveId != STATUS_GOING_HOME && m_z_homed == false)
+        {
+            m_error_code |= ACT_NOT_HOMED;
+        }
+        else if (!p.isWithinRange())
         {
             m_error_code |= ACT_UNREACHABLE;
             if (p.y < ACT_MGR_Y_MIN || p.y > ACT_MGR_Y_MAX) {
@@ -395,6 +401,7 @@ private:
         case 3:
             if (aimPositionReached())
             {
+                m_z_homed = true;
                 finishMove();
             }
             break;
@@ -582,6 +589,7 @@ private:
     uint32_t m_composed_move_step;
     uint32_t m_move_start_time; // ms
     PuckScanner m_puck_scanner;
+    bool m_z_homed; // is z-axis was homed (the 0 position is set correctly)
 };
 
 #endif
