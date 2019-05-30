@@ -20,7 +20,7 @@ public:
         minAimSpeed = 400;
 
         stoppedSpeed = 50;
-        stoppingResponseTime = 200;
+        stoppingResponseTime = 300;
 
         curvatureK1 = 0.025;
         curvatureK2 = 7.0;
@@ -38,7 +38,7 @@ public:
         minAimSpeed = 400;
 
         stoppedSpeed = 50;
-        stoppingResponseTime = 200;
+        stoppingResponseTime = 300;
 
         curvatureK1 = 0.0025;
         curvatureK2 = 0.7;
