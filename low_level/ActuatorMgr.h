@@ -23,8 +23,8 @@
 #define ACT_MGR_THETA_TOLERANCE     (5.0)       // deg
 #define ACT_MGR_Y_MIN               (-23.795)   // mm (47.59 / 2)
 #define ACT_MGR_Y_MAX               (23.795)    // mm
-#define ACT_MGR_Z_MIN               (0.0)       // mm
-#define ACT_MGR_Z_MAX               (218.0)     // mm (todo: adjust with the base)
+#define ACT_MGR_Z_MIN               (10.0)       // mm
+#define ACT_MGR_Z_MAX               (228.0)     // mm (todo: adjust with the base)
 #define ACT_MGR_THETA_MIN           (-90.0)     // deg
 #define ACT_MGR_THETA_MAX           (40.0)      // deg
 #define ACT_MGR_Y_ORIGIN            (155.0)     // deg (Angle de l'AX12 de l'axe Y pour une fourche centrée)
@@ -128,6 +128,7 @@ public:
             PIN_STEPPER_SLEEP, PIN_MICROSTEP_1, PIN_MICROSTEP_2, PIN_MICROSTEP_3),
         m_puck_scanner(ACT_MGR_Y_MIN, ACT_MGR_Y_MAX)
     {
+        m_current_position.z = ACT_MGR_Z_MIN;
         m_error_code = ACT_OK;
         m_status = STATUS_IDLE;
         m_left_sensor_value = (SensorValue)SENSOR_DEAD;
