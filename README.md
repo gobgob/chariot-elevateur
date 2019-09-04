@@ -39,7 +39,7 @@ Bibliothèques directement incluses avec l'IDE Arduino et Teensyduino, ou bien p
 #### Bibliothèques tierces
 Bibliothèques à installer manuellement (coiper le dossier de la librairie directement dans le répertoire `Arduino/librairies/`).
 >* dynamixel_teensy (v1.0) : https://github.com/sylvaing19/dynamixel_teensy
->* ToF Sensor (v1.0) : -
+>* ToF Sensor (v0.1) : lowlevel/ToF-Sensor.zip
 
 
 
